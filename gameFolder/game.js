@@ -28,7 +28,7 @@ function create () {
     ledge = platforms.create(400, 450, 'ground')
     ledge.body.immovable = true
     
-
+    
 
 
     if (game.sound.usingWebAudio &&
