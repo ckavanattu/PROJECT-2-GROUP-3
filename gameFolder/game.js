@@ -40,7 +40,10 @@ function create () {
     game.physics.ARCADE.enable(player)
     player.body.bounce.y = 0.2
     player.body.gravity.y = 800
-    player.body.collideWorldBounds = true     
+    player.body.collideWorldBounds = true
+    
+    player.animations.add('left' [10, 11], 10, true)\
+    player.animations.add('left', [15, 18], 10, true)
 
     gems = game.add.group()
     gems.enableBody = true
@@ -69,7 +72,12 @@ function update () {
     } else if (cursors.right.isDown) {
         player.body.velocity.x = 150
         player.animations.play('right')
-    } 
+    } else {
+        platforms.animations,stop()
+    }
+    if (cursors.up.isDown && player.body.touching.down) {
+        player.body.velocity.y = -400
+    }
 }
 
 function collectGem (player, gem) {
