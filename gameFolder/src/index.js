@@ -20,12 +20,12 @@ class MyGame extends Phaser.Scene
         this.load.image("diamond", diamond);
         this.load.image("spikeball", spikeball);
         
-        this.load.spritesheet("movement", move, {
+        this.load.spritesheet("move", move, {
             frameWidth: 32, 
-            frameHeight: 48,
+            frameHeight: 62,
         });
 
-        this.load.spritesheet("movement", revmove, {
+        this.load.spritesheet("revmove", revmove, {
             frameWidth: 32, 
             frameHeight: 48,
         });
@@ -35,20 +35,51 @@ class MyGame extends Phaser.Scene
     create ()
     {
         this.add.image(400, 300, "mountain");
-        mountain.scale = 0.5;
 
+        const platforms = this.physics.add.staticGroup();
+        // platforms
+        platforms.create(400, 568, "ground").setScale(2).refreshBody();
 
-    }
+        platforms.create(900, 350, "ground")
+        platforms.create(25, 295, "ground")
+        platforms.create(550, 220, "ground")
+        platforms.create(-120, 150, "ground")
+        platforms.create(600, 450, "ground")
+        this.player = this.physics.add.sprite(100, 450, "move");
+        this.player.setBounce(0.2);
+        this.player.setCollideWorldBounds(true);
 
-    resize (width, height) {
-        this.cameras.resize(width, height);
-        this.mountain.setDisplaySize(width, height);
-        
+        this.physics.add.collider(this.player, platforms);
+        // animation
+        this.anims.create({
+            key: "turn",
+            frames: [{key:"movement", frame: 12 }],
+            frameRate: 20,
+        });
+        this.anims.create({
+            key: "right",
+            frames:this.anims.generateFrameNumbers("movement", { start:10, end: 16 }),
+            frameRate: 10,
+            repeat: -1,
+        });
+        this.anims.create({
+            key: "left",
+            frames:this.anims.generateFrameNumbers("REVmovement", { start:6, end: 10 }),
+            frameRate: 10,
+            repeat: -1,
+        });
     }
 
     update ()
     {
-
+        const cursors = this.input.keyboard.createCursorKeys();
+        if (cursors.left.isDown) {
+            this.player.setVelocityX(-160);
+            this.player.anims.play("left", true);
+        } else if (cursors.right.isDown) {
+            this.player.setVelocityX(160);
+            this.player.anims.play("right", true);
+        }
     }
 }
 
