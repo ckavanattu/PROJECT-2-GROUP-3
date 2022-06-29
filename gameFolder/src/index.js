@@ -4,7 +4,8 @@ import ground from './assets/platform.png';
 import diamond from './assets/diamond_big.png';
 import spikeball from './assets/spikeball.png';
 import move from './assets/movement.png';
-import revmove from './assets/REVmovement.png';
+// import revmove from './assets/REVmovement.png';
+// import idle from './assets/Idle.png';
 
 class MyGame extends Phaser.Scene
 {
@@ -20,15 +21,20 @@ class MyGame extends Phaser.Scene
         this.load.image("diamond", diamond);
         this.load.image("spikeball", spikeball);
         
-        this.load.spritesheet("move", move, {
+        this.load.spritesheet("movement", move, {
             frameWidth: 32, 
             frameHeight: 62,
         });
 
-        this.load.spritesheet("revmove", revmove, {
-            frameWidth: 32, 
-            frameHeight: 48,
-        });
+        // this.load.spritesheet("revmove", revmove, {
+        //     frameWidth: 32, 
+        //     frameHeight: 48,
+        // });
+
+        // this.load.spritesheet("Idle", idle, {
+        //     frameWidth: 32, 
+        //     frameHeight: 62,
+        // });
         
     }
       
@@ -45,7 +51,7 @@ class MyGame extends Phaser.Scene
         platforms.create(550, 220, "ground")
         platforms.create(-120, 150, "ground")
         platforms.create(600, 450, "ground")
-        this.player = this.physics.add.sprite(100, 450, "move");
+        this.player = this.physics.add.sprite(100, 450, "movement");
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
 
@@ -53,18 +59,18 @@ class MyGame extends Phaser.Scene
         // animation
         this.anims.create({
             key: "turn",
-            frames: [{key:"movement", frame: 12 }],
+            frames: [{key:"movement", frame: 2 }],
             frameRate: 20,
         });
         this.anims.create({
             key: "right",
-            frames:this.anims.generateFrameNumbers("movement", { start:10, end: 16 }),
+            frames:this.anims.generateFrameNumbers("movement", { start:8, end: 17 }),
             frameRate: 10,
             repeat: -1,
         });
         this.anims.create({
             key: "left",
-            frames:this.anims.generateFrameNumbers("REVmovement", { start:6, end: 10 }),
+            frames:this.anims.generateFrameNumbers("movement", { start:17, end: 8 }),
             frameRate: 10,
             repeat: -1,
         });
@@ -79,6 +85,13 @@ class MyGame extends Phaser.Scene
         } else if (cursors.right.isDown) {
             this.player.setVelocityX(160);
             this.player.anims.play("right", true);
+        } else {
+            this.player.setVelocityX(0);
+            this.player.anims.play("turn");
+        }
+
+        if (cursors.up.isDown && this.player.body.touching.down) {
+            this.player.setVelocityY(-400);
         }
     }
 }
