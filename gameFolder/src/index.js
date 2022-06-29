@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import mountain from "./assets/mountain1.jpg";
 import ground from './assets/platform.png';
-import diamond from './assets/diamond_big.png';
+import diamond from './assets/diamond.png';
 import spikeball from './assets/spikeball.png';
 import move from './assets/movement.png';
 // import revmove from './assets/REVmovement.png';
@@ -64,16 +64,30 @@ class MyGame extends Phaser.Scene
         });
         this.anims.create({
             key: "right",
-            frames:this.anims.generateFrameNumbers("movement", { start:8, end: 17 }),
+            frames:this.anims.generateFrameNumbers("movement", { start:0, end: 17 }),
             frameRate: 10,
             repeat: -1,
         });
         this.anims.create({
             key: "left",
-            frames:this.anims.generateFrameNumbers("movement", { start:17, end: 8 }),
+            frames:this.anims.generateFrameNumbers("movement", { start:17, end: 0 }),
             frameRate: 10,
             repeat: -1,
         });
+
+        const diamonds = this.physics.add.group({
+            key: "diamond",
+            repeat: 11,
+            setXY: {x: 12, y: 0, stepX: 70 },
+        });
+        diamonds.children.iterate(function(child) {
+            child.setBounceY(Phaser.Math.FloatBetween(0.4,0.8));
+        });
+        this.physics.add.collider(diamonds, platforms);
+        this.physics.add.overlap(this.player, diamonds, collect, null, this);
+        function collect(player, diamond) {
+            diamond.disableBody(true, true);
+        }
     }
 
     update ()
@@ -105,7 +119,7 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: {y: 450},
-            debug: true
+            debug: false
         }
     },
     scene: MyGame
