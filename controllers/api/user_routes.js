@@ -3,7 +3,9 @@ const { User } = require('../../models');
 
 //route to get all users
 router.get('/', (req, res) => {
-    User.findAll() 
+    User.findAll({
+      attributes: { exclude: ['password']}
+    }) 
         .then(dbUserData => res.json(dbUserData))
         .catch(err =>{
             console.log(err);
@@ -14,6 +16,7 @@ router.get('/', (req, res) => {
 //route to find user
 router.get('/:id', (req, res) => {
     User.findOne({
+        attributes: { exclude: ['password']},
         where: {
           id: req.params.id
         }
