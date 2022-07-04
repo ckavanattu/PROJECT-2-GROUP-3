@@ -24,8 +24,8 @@ class MyGame extends Phaser.Scene {
     });
 
     this.load.spritesheet("movement", move, {
-      frameWidth: 32,
-      frameHeight: 62,
+      frameWidth: 48,
+      frameHeight: 64,
     });
 
     // this.load.spritesheet("revmove", revmove, {
@@ -56,9 +56,9 @@ class MyGame extends Phaser.Scene {
     platforms.create(600, 450, "ground");
 
     this.player = this.physics.add.sprite(100, 450, "movement");
-    this.player.setSize(20, 40, true);
-    this.player.body.offset.y = 25;
-    this.player.body.offset.x = 10;
+    this.player.setSize(26, 42, true);
+    this.player.body.offset.y = 22;
+    this.player.body.offset.x = 18;
 
     this.player.setBounce(0.2);
     this.player.setCollideWorldBounds(true);
@@ -67,19 +67,19 @@ class MyGame extends Phaser.Scene {
     // animation
     this.anims.create({
       key: "turn",
-      frames: [{ key: "movement", frame: 2 }],
-      frameRate: 20,
+      frames: [{ key: "movement", frame: 0 }],
+      frameRate: 10,
     });
     this.anims.create({
       key: "right",
-      frames: this.anims.generateFrameNumbers("movement", { start: 10, end: 15, first: 10 }),
-      frameRate: 10,
+      frames: this.anims.generateFrameNumbers("movement", { start: 3, end: 4 }),
+      frameRate: 5,
       repeat: -1,
     });
     this.anims.create({
       key: "left",
-      frames: this.anims.generateFrameNumbers("movement", { start: 0, end: 5 }),
-      frameRate: 10,
+      frames: this.anims.generateFrameNumbers("movement", { start: 3, end: 4 }),
+      frameRate: 5,
       repeat: -1,
     });
 
@@ -169,9 +169,11 @@ class MyGame extends Phaser.Scene {
     if (cursors.left.isDown) {
       this.player.setVelocityX(-160);
       this.player.anims.play("left", true);
+      this.player.flipX = true;
     } else if (cursors.right.isDown) {
       this.player.setVelocityX(160);
       this.player.anims.play("right", true);
+      this.player.flipX = false;
     } else {
       this.player.setVelocityX(0);
       this.player.anims.play("turn");
