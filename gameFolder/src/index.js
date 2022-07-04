@@ -4,8 +4,9 @@ import ground from "./assets/platform.png";
 import diamond from "./assets/diamond.png";
 import spikeball from "./assets/spikeball.png";
 import move from "./assets/movement.png";
+// import treasure from "./assets/treasure.mp3";
 // import idle from "./assets/adventurerIdle.png";
-import revmove from './assets/REVmovement.png';
+// import revmove from './assets/REVmovement.png';
 // import idle from './assets/Idle.png';
 
 class MyGame extends Phaser.Scene {
@@ -36,6 +37,9 @@ class MyGame extends Phaser.Scene {
     //     frameWidth: 32,
     //     frameHeight: 62,
     // });
+
+    // this.load.audio("treasure", ["./assets/treasure.mp3"]);
+
   }
 
   create() {
@@ -53,6 +57,8 @@ class MyGame extends Phaser.Scene {
 
     this.player = this.physics.add.sprite(100, 450, "movement");
     this.player.setSize(20, 40, true);
+    this.player.body.offset.y = 25;
+    this.player.body.offset.x = 10;
 
     this.player.setBounce(0.2);
     this.player.setCollideWorldBounds(true);
@@ -66,7 +72,7 @@ class MyGame extends Phaser.Scene {
     });
     this.anims.create({
       key: "right",
-      frames: this.anims.generateFrameNumbers("movement", { start: 10, end: 15, first: 0 }),
+      frames: this.anims.generateFrameNumbers("movement", { start: 10, end: 15, first: 10 }),
       frameRate: 10,
       repeat: -1,
     });
@@ -125,6 +131,7 @@ class MyGame extends Phaser.Scene {
       diamond.disableBody(true, true);
       score += 10;
       scoreText.setText("Score: " + score);
+      // this.treasure.play();
 
       if (diamonds.countActive(true) === 0) {
         diamonds.children.iterate(function (child) {
@@ -143,7 +150,8 @@ class MyGame extends Phaser.Scene {
       }
     }
 
-    this.gameOverText = this.add.text(400,280, 'Game Over', { fontSize: '86x', fill: '#000'})
+    // game over text
+    this.gameOverText = this.add.text(400,280, 'Game Over', { fontSize: '86px', fill: '#000'})
     this.gameOverText.setOrigin(0.5);
     this.gameOverText.visible = false;
 
@@ -151,6 +159,8 @@ class MyGame extends Phaser.Scene {
     this.restartText.setOrigin(0.5);
     this.restartText.visible = false;
 
+    // sound effects added in?
+    // this.treasure = this.sound.add("treasure", { loop: false });
 
   }
 
