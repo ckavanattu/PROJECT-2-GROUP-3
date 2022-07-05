@@ -3,16 +3,15 @@ import diamond from "./assets/diamond.png";
 import spikeball from "./assets/spikeball.png";
 import move from "./assets/movement.png";
 import night_scene from "./assets/night_scene.gif";
-import pixel_castle from "./assets/pixel_castle.jpg";
 
-export default class level2 extends Phaser.Scene {
+export default class level3 extends Phaser.Scene {
     constructor() {
-      super({key: "level2"});
+      super({key: "level3"});
     }
   
     preload() {
     //   this.load.image("night_scene", night_scene);
-    this.load.image("pixel_castle", pixel_castle);
+    this.load.image("night_scene", night_scene);
       this.load.image("ground", ground);
       this.load.image("diamond", diamond);
       this.load.image("spikeball", spikeball, {
@@ -41,9 +40,9 @@ export default class level2 extends Phaser.Scene {
   
     create() {
 
-    this.cameras.main.fadeIn(1000, 0, 0, 0)
+    this.cameras.main.fadeIn(800, 0, 0, 0)
     
-    this.background = this.add.image(400, 300, "pixel_castle").setOrigin(0.5, 0.5);
+    this.background = this.add.image(400, 300, "night_scene").setOrigin(0.5, 0.5);
     this.background.displayWidth = 800;
     this.background.displayHeight = 600;
   
@@ -133,13 +132,13 @@ export default class level2 extends Phaser.Scene {
         diamond.disableBody(true, true);
         score += 10;
         scoreText.setText("Score: " + score);
-        
-        if (score > 10) {
-            this.cameras.main.fadeOut(1000, 0, 0, 0);
-            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-              this.scene.start('level3');             
-            })
-          }
+
+        // if (score > 10) {
+        //     this.cameras.main.fadeOut(1000, 0, 0, 0);
+        //     this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+        //       this.scene.start('level');             
+        //     })
+        //   }
   
         if (diamonds.countActive(true) === 0) {
           diamonds.children.iterate(function (child) {

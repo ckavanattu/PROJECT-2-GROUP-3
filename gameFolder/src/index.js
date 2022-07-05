@@ -8,6 +8,7 @@ import night_scene from "./assets/night_scene.gif";
 import pixel_castle from "./assets/pixel_castle.jpg";
 import level1 from "./level1.js";
 import level2 from "./level2.js";
+import level3 from "./level3.js";
 // import treasure from "./assets/treasure.mp3";
 // import idle from "./assets/adventurerIdle.png";
 // import revmove from './assets/REVmovement.png';
@@ -27,7 +28,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [level1, level2 ]
+  scene: [level1, level2, level3 ]
 };
 
 // class level2 extends Phaser.Scene {
