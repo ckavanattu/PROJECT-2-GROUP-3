@@ -1,3 +1,14 @@
+.body {
+  content: "";
+  position: absolute;
+  background-image: url("../assets/images/clouds.jpg");
+  right: 0;
+  height: 850px;
+  width: 100%;
+  opacity: .8;
+  background-attachment: fixed;
+}
+
 ul {
     display: inline;
     list-style-type: none;
