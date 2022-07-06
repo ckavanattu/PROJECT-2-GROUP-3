@@ -84,10 +84,12 @@ float: right;
 
     h2 {
       padding-top: 25px;
+      color: gold;
+      letter-spacing: 1.5px;
       
     }
 
-    h2,
+    
     p {
       margin: 0 0 20px;
       font-weight: 300;
@@ -182,14 +184,16 @@ float: right;
       float: left;
       color: #000000;
       background:#ffffff;
+      padding: 25px;
+      margin: 30px;
     }
     
     .ls {
       padding: 20px;
       margin: 20px;
       background: #eee;
-      width: 170px;
-      height: 140px;
+      width: 85px;
+      height: 70px;
     }
 
     li  {
@@ -198,3 +202,19 @@ text-align: center;
 text-decoration: none;
 float: right;
 }
+
+.app-title {
+  color: #1c87c9;
+  font-style: italic;
+  text-decoration: none;
+  color: white;
+}
+
+a:link { 
+  text-decoration: none; 
+  text-decoration-color: #fff;
+}
+
+
+a:visited { text-decoration: white; }
+
