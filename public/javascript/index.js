@@ -210,7 +210,8 @@ class level1 extends Phaser.Scene {
   
     preload() {
     this.load.image("pixel_castle", "assets/pixel_castle.jpg");
-    this.load.image("ground", "assets/platform.png");
+    this.load.image("grass", "assets/grassplatform.png");
+    this.load.image("smallgrass", "assets/grassplatform2.png");
     this.load.image("diamond", "assets/diamond.png");
     this.load.image("spikeball", "assets/spikeball.png", {
       frameWidth: 32,
@@ -233,15 +234,17 @@ class level1 extends Phaser.Scene {
     this.background.displayWidth = 800;
     this.background.displayHeight = 600;
   
-      const platforms = this.physics.add.staticGroup();
+      const grassplatforms = this.physics.add.staticGroup();
       // platforms
-      platforms.create(400, 568, "ground").setScale(2).refreshBody();
+      grassplatforms.create(400, 542, "grass").setScale(2).refreshBody();
   
-      platforms.create(900, 350, "ground");
-      platforms.create(25, 295, "ground");
-      platforms.create(550, 220, "ground");
-      platforms.create(-120, 150, "ground");
-      platforms.create(600, 450, "ground");
+      grassplatforms.create(900, 350, "grass");
+      grassplatforms.create(225, 295, "smallgrass");
+      grassplatforms.create(300, 120, "smallgrass");
+      grassplatforms.create(550, 220, "smallgrass");
+      grassplatforms.create(150, 438, "smallgrass");
+      grassplatforms.create(-120, 185, "grass");
+      grassplatforms.create(530, 420, "smallgrass");
   
       this.player = this.physics.add.sprite(100, 450, "movement");
       this.player.setSize(26, 42, true);
@@ -251,7 +254,7 @@ class level1 extends Phaser.Scene {
       this.player.setBounce(0.2);
       this.player.setCollideWorldBounds(true);
   
-      this.physics.add.collider(this.player, platforms);
+      this.physics.add.collider(this.player, grassplatforms);
       // animation
       this.anims.create({
         key: "turn",
@@ -280,13 +283,13 @@ class level1 extends Phaser.Scene {
       diamonds.children.iterate(function (child) {
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
       });
-      this.physics.add.collider(diamonds, platforms);
+      this.physics.add.collider(diamonds, grassplatforms);
       this.physics.add.overlap(this.player, diamonds, collect, null, this);
   
       // spikeballs
       const spikeballs = this.physics.add.group();
   
-      this.physics.add.collider(spikeballs, platforms);
+      this.physics.add.collider(spikeballs, grassplatforms);
   
       this.physics.add.collider(
         this.player,
@@ -320,7 +323,7 @@ class level1 extends Phaser.Scene {
         score += 10;
         scoreText.setText("Score: " + score);
         
-        if (score > 10) {
+        if (score > 50) {
             this.cameras.main.fadeOut(1000, 0, 0, 0);
             this.scene.start('level3');             
             // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
@@ -500,18 +503,18 @@ class level1 extends Phaser.Scene {
         scoreText.setText("Score: " + score);
         // this.treasure.play();
   
-        if (score > 10) {
-          this.cameras.main.fadeOut(1000, 0, 0, 0);
-          this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-          //   this.scene.add('level2');
-            this.scene.start('level2');
-            // this.background = this.add.image(400, 300, "pixel_castle").setOrigin(0.5, 0.5);
-            // this.background.displayWidth = 800;
-            // this.background.displayHeight = 600;
-            // this.cameras.main.fadeIn(1000, 0, 0, 0)
+        // if (score > 10) {
+        //   this.cameras.main.fadeOut(1000, 0, 0, 0);
+        //   this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+        //   //   this.scene.add('level2');
+        //     this.scene.start('level2');
+        //     // this.background = this.add.image(400, 300, "pixel_castle").setOrigin(0.5, 0.5);
+        //     // this.background.displayWidth = 800;
+        //     // this.background.displayHeight = 600;
+        //     // this.cameras.main.fadeIn(1000, 0, 0, 0)
             
-          })
-        }
+        //   })
+        // }
   
         if (diamonds.countActive(true) === 0) {
           diamonds.children.iterate(function (child) {
