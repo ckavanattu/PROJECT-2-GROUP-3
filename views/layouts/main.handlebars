@@ -1,12 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project</title>
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+
+<body class= "flex-column min-100-vh">
+  <nav class="navbar">
+    <ul>
+      <li class="li-inline nav-item"><a href="/homepage">Home</a></li>
+    
+      <li class="li-inline nav-item"><a href="/demo">Demo</a></li>
+
+        <li class="li-inline nav-item">
+      <button class="button" data-modal="modalOne">Login</button>
+    </li>
+    <li>
+      <button class="button" data-modal="modalTwo">Sign Up</button>
+    </li>
+    <div id="modalOne" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <a class="close">&times;</a>
+          <form action="/">
+            <h2>Login</h2>
+            <div>
+              <input type="text" name="name" placeholder="Email" />
+              <input type="password" name="name" placeholder="Password" />
+            </div>
+            <button type="submit" href="">Enter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="modalTwo" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <span class="close">&times;</span>
+          <form action="/">
+            <h2>Sign Up</h2>
+            <div>
+              <input class="fname" type="text" name="name" placeholder="First Name" />
+              <input type="text" name="name" placeholder="Last Name" />
+              <input type="text" name="name" placeholder="Email" />
+              <input type="password" name="name" placeholder="Password" />
+            </div>
+            <button type="submit" href="/">Enter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    </ul>
+  </nav>
+  <header class="hero">
+    <h1 class="app-title"><a href="/">Jumpman</a></h1>
+  </header>
+
+  <main class="col-auto">
     {{{body}}}
+  </main>
+
+  <footer class="flex-row justify-center">
+  </footer>
 </body>
+
+
 </html>
+
+ <script src= "/javascript/modal.js"> </script>
