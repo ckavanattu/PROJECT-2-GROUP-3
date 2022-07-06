@@ -11,8 +11,8 @@ router.get("/settings", async (req, res) => {
     res.render("settings");
 })
 
-router.get("/placeholder", async (req, res) => {
-    res.render("placeholder");
+router.get("/highscores", async (req, res) => {
+    res.render("highscores");
 })
 
 module.exports = router;
