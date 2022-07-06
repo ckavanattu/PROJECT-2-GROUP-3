@@ -13,10 +13,49 @@
 <body class= "flex-column min-100-vh">
   <nav class="navbar">
     <ul>
-      <li class="li-inline nav-item"><a href="/">Home</a></li>
-      <li class="li-inline nav-item"><a href="/highscores">High Scores</a></li>
-      <li class="li-inline nav-item"><a href="/settings">Settings</a></li>
-      
+      <li class="li-inline nav-item"><a href="/homepage">Home</a></li>
+    
+      <li class="li-inline nav-item"><a href="/demo">Demo</a></li>
+
+        <li class="li-inline nav-item">
+      <button class="button" data-modal="modalOne">Login</button>
+    </li>
+    <li>
+      <button class="button" data-modal="modalTwo">Sign Up</button>
+    </li>
+    <div id="modalOne" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <a class="close">&times;</a>
+          <form action="/">
+            <h2>Login</h2>
+            <div>
+              <input type="text" name="name" placeholder="Email" />
+              <input type="password" name="name" placeholder="Password" />
+            </div>
+            <button type="submit" href="">Enter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="modalTwo" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <span class="close">&times;</span>
+          <form action="/">
+            <h2>Sign Up</h2>
+            <div>
+              <input class="fname" type="text" name="name" placeholder="First Name" />
+              <input type="text" name="name" placeholder="Last Name" />
+              <input type="text" name="name" placeholder="Email" />
+              <input type="password" name="name" placeholder="Password" />
+            </div>
+            <button type="submit" href="/">Enter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
 
     </ul>
   </nav>
@@ -29,10 +68,10 @@
   </main>
 
   <footer class="flex-row justify-center">
-    &copy; 
   </footer>
 </body>
 
 
 </html>
-<script src="/js/logout.js"></script>
+
+ <script src= "/javascript/modal.js"> </script>

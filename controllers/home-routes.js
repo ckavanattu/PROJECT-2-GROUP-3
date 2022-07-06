@@ -3,12 +3,12 @@ const router = require('express').Router();
 
 // WORK HERE
 // creating routes and endpoints to render the html depedning on what endpoint is visited in the browser url
-router.get('/', async (req, res) => {
+router.get('/homepage', async (req, res) => {
     res.render("homepage");
 });
 
-router.get("/settings", async (req, res) => {
-    res.render("settings");
+router.get("/demo", async (req, res) => {
+    res.render("demo");
 })
 
 router.get("/highscores", async (req, res) => {

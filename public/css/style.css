@@ -11,7 +11,7 @@ body {
   right: 0;
   height: 850px;
   width: 100%;
-  opacity: .8;
+  opacity: .9;
   background-attachment: fixed;
   background-size:cover;
 }
@@ -25,6 +25,9 @@ body {
   margin-right : auto; 
   position : relative;
   background-color: white;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 h1 {
@@ -42,22 +45,18 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    
   }
-
-  li {
-    display: inline;
-float: right;
-}
 
 header h1 {
 display: inline;
 }
 
-li a {
+li  {
 display: inline;
 text-align: center;
-padding: 10px;
 text-decoration: none;
+float: right;
 }
 
     .modal {
@@ -85,6 +84,7 @@ text-decoration: none;
 
     h2 {
       padding-top: 25px;
+      
     }
 
     h2,
@@ -155,8 +155,7 @@ text-decoration: none;
       outline: none;
       border-right: none;
       border-left: none;
-      border-bottom: green 1px solid;
-      padding: 0 0 3px 0;
+      border-bottom: none;
       font-size: 16px;
       cursor: pointer;
     }
@@ -165,3 +164,37 @@ text-decoration: none;
       border-bottom: green, 5px solid;
       color: green;
     }
+
+    .controls {
+      text-decoration: none;
+      float: left;
+      color: #000000;
+        margin-top : 50px; 
+        padding : 15px;
+        margin-right : auto; 
+        background-color: #ffffff;
+      }
+
+    .demo {
+      display: inline;
+      text-align: center;
+      text-decoration: none;
+      float: left;
+      color: #000000;
+      background:#ffffff;
+    }
+    
+    .ls {
+      padding: 20px;
+      margin: 20px;
+      background: #eee;
+      width: 170px;
+      height: 140px;
+    }
+
+    li  {
+display: inline;
+text-align: center;
+text-decoration: none;
+float: right;
+}
