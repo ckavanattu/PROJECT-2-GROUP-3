@@ -124,7 +124,7 @@ class level1 extends Phaser.Scene {
       score += 10;
       scoreText.setText("Score: " + score);
   
-      if (score > 10) {
+      if (score > 470) {
         this.scene.start('level2');
         // this.cameras.main.fadeOut(1000, 0, 0, 0);
         // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
@@ -187,21 +187,6 @@ class level1 extends Phaser.Scene {
   
   }
   }
-  
-  // const config = {
-  //   type: Phaser.AUTO,
-  //   parent: "phaser-example",
-  //   width: 800,
-  //   height: 600,
-  //   physics: {
-  //     default: "arcade",
-  //     arcade: {
-  //       gravity: { y: 450 },
-  //       debug: true,
-  //     },
-  //   },
-  //   scene: [level1, level2 ]
-  // };
   
   class level2 extends Phaser.Scene {
     constructor() {
@@ -278,7 +263,7 @@ class level1 extends Phaser.Scene {
       const diamonds = this.physics.add.group({
         key: "diamond",
         repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 68 },
+        setXY: { x: 12, y: 0, stepX: 66 },
       });
       diamonds.children.iterate(function (child) {
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
@@ -323,7 +308,7 @@ class level1 extends Phaser.Scene {
         score += 10;
         scoreText.setText("Score: " + score);
         
-        if (score > 50) {
+        if (score > 470) {
             this.cameras.main.fadeOut(1000, 0, 0, 0);
             this.scene.start('level3');             
             // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
@@ -385,12 +370,17 @@ class level1 extends Phaser.Scene {
     }
   
     preload() {
-    //   this.load.image("mountain", mountain);
-      // this.load.image("night_scene", night_scene);
+   
       this.load.image("night_scene", "assets/night_scene.gif")
-      this.load.image("ground", "assets/platform.png");
+      this.load.image("bg1", "assets/background1.png");
+      this.load.image("bg2", "assets/background2.png");
+      this.load.image("bg2", "assets/background3.png");
+      this.load.image("bg3", "assets/background4b.png");
+      this.load.image("wood", "assets/woodplatform.png");
+      this.load.image("box", "assets/boxplatform.png");
+      this.load.image("stone", "assets/stoneplatform.png");
       this.load.image("diamond", "assets/diamond.png");
-      this.load.image("spikeball", "assets/spikeball.png", {
+      this.load.image("spikeball1", "assets/spikeball1.png", {
         frameWidth: 32,
         frameHeight: 32,
       });
@@ -403,18 +393,35 @@ class level1 extends Phaser.Scene {
     }
   
     create() {
-      this.add.image( 400, 300, "night_scene");
+      // this.add.image( 400, 300, "night_scene");
+      this.add.image( 400, 300, "bg1");
+      this.add.image( 400, 300, "bg2");
+      this.add.image( 400, 300, "bg3");
+      this.background = this.add.image(400, 300, "bg3").setOrigin(0.5, 0.5);
+    this.background.displayWidth = 800;
+    this.background.displayHeight = 600;
       
   
       const platforms = this.physics.add.staticGroup();
       // platforms
-      platforms.create(400, 568, "ground").setScale(2).refreshBody();
+      platforms.create(100, 550, "wood").setScale(2).refreshBody();
+      platforms.create(430, 550, "wood").setScale(2).refreshBody();
+      platforms.create(750, 550, "wood").setScale(2).refreshBody();
   
-      platforms.create(900, 350, "ground");
-      platforms.create(25, 295, "ground");
-      platforms.create(550, 220, "ground");
-      platforms.create(-120, 150, "ground");
-      platforms.create(600, 450, "ground");
+      platforms.create(203, 350, "wood");
+      platforms.create(660, 205, "wood");
+      platforms.create(770, 348, "stone");
+      platforms.create(500, 205, "wood");
+      platforms.create(350, 320, "stone");
+      platforms.create(300, 200, "stone");
+      platforms.create(25, 460, "stone");
+      platforms.create(525, 175, "box");
+      platforms.create(400, 512, "box");
+      platforms.create(650, 420, "box");
+      platforms.create(350, 320, "stone");
+      platforms.create(115, 217, "stone");
+      platforms.create(20, 150, "wood");
+      platforms.create(600, 450, "wood");
   
       this.player = this.physics.add.sprite(100, 450, "movement");
       this.player.setSize(26, 42, true);
@@ -448,7 +455,7 @@ class level1 extends Phaser.Scene {
       const diamonds = this.physics.add.group({
         key: "diamond",
         repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 68 },
+        setXY: { x: 12, y: 0, stepX: 68.5 },
       });
       diamonds.children.iterate(function (child) {
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
@@ -483,7 +490,7 @@ class level1 extends Phaser.Scene {
       // score text
       const scoreText = this.add.text(16, 16, "score: 0", {
         fontSize: "32px",
-        fill: "#000",
+        fill: "#FFFFF0",
         
       });
       let score = 0;
@@ -526,7 +533,7 @@ class level1 extends Phaser.Scene {
               ? Phaser.Math.Between(400, 800)
               : Phaser.Math.Between(0, 400);
   
-          const spikeball = spikeballs.create(x, 16, "spikeball");
+          const spikeball = spikeballs.create(x, 16, "spikeball1");
           spikeball.setBounce(1);
           spikeball.setCollideWorldBounds(true);
           spikeball.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -575,7 +582,7 @@ class level1 extends Phaser.Scene {
       default: "arcade",
       arcade: {
         gravity: { y: 450 },
-        debug: true,
+        debug: false,
       },
     },
     scene: [level1, level2, level3 ]
