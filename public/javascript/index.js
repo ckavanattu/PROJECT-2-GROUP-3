@@ -323,8 +323,7 @@ class level1 extends Phaser.Scene {
         if (score > 50) {
             this.cameras.main.fadeOut(1000, 0, 0, 0);
             this.scene.start('level3');             
-            // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-            // })
+          
           }
   
         if (diamonds.countActive(true) === 0) {
