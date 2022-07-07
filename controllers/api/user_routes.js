@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+//route to get all users
 router.get('/', (req, res) => {
-    User.findAll() 
+    User.findAll({
+      attributes: { exclude: ['password']}
+    }) 
         .then(dbUserData => res.json(dbUserData))
         .catch(err =>{
             console.log(err);
@@ -10,8 +13,10 @@ router.get('/', (req, res) => {
         });
 });;
 
+//route to find user
 router.get('/:id', (req, res) => {
     User.findOne({
+        attributes: { exclude: ['password']},
         where: {
           id: req.params.id
         }
@@ -29,6 +34,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
+//route to create user
 router.post ('/',  (req, res) => {
     User.create({
         username: req.body.username,
@@ -42,6 +48,34 @@ router.post ('/',  (req, res) => {
         });
 });
 
+//route to log in
+
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+          email: req.body.email
+        }
+      }).then(dbUserData => {
+
+        if (!dbUserData) {
+          res.status(400).json({ message: 'No user with that email address!' });
+          return;
+        }
+    
+          
+        // Verify user
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+          }
+          
+          res.json({ user: dbUserData, message: 'You are now logged in!' });
+    
+      });  
+})
+
+//route to delete user
 router.delete('/:id', (req, res) => {
     User.destroy({
         where: {
