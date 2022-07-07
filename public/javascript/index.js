@@ -572,7 +572,7 @@ class level1 extends Phaser.Scene {
       default: "arcade",
       arcade: {
         gravity: { y: 450 },
-        debug: true,
+        debug: false,
       },
     },
     scene: [level1, level2, level3 ]
