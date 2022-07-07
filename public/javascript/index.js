@@ -371,7 +371,6 @@ class level1 extends Phaser.Scene {
   
     preload() {
    
-      this.load.image("night_scene", "assets/night_scene.gif")
       this.load.image("bg1", "assets/background1.png");
       this.load.image("bg2", "assets/background2.png");
       this.load.image("bg2", "assets/background3.png");
@@ -494,15 +493,7 @@ class level1 extends Phaser.Scene {
         
       });
       let score = 0;
-  
-      // if (score > 100) {
-      //   this.cameras.main.fadeOut(1000, 0, 0, 0);
-      //   this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-      //     this.scene.add('level2', level2);
-      //     this.scene.start('level2', level2);
-      //   })
-      // }
-  
+    
       // diamonds collision
       function collect(player, diamond) {
         diamond.disableBody(true, true);
@@ -512,9 +503,7 @@ class level1 extends Phaser.Scene {
   
         // if (score > 10) {
         //   this.cameras.main.fadeOut(1000, 0, 0, 0);
-        //   this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-        //   //   this.scene.add('level2');
-        //     this.scene.start('level2');
+        //     this.scene.start('level4');
         //     // this.background = this.add.image(400, 300, "pixel_castle").setOrigin(0.5, 0.5);
         //     // this.background.displayWidth = 800;
         //     // this.background.displayHeight = 600;
