@@ -15,4 +15,10 @@ router.get("/highscores", async (req, res) => {
     res.render("highscores");
 })
 
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+})
 module.exports = router;
