@@ -15,6 +15,7 @@ if (email && password) {
     });
 
     if(response.ok) {
+        alert ("Logged In")
         document.location.replace('/')
 
     } else {
