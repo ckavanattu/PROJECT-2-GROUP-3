@@ -7,61 +7,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project</title>
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+ 
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body class= "flex-column min-100-vh">
   <nav class="navbar">
-    <ul>
-      <li class="li-inline nav-item"><a href="/homepage">Home</a></li>
-      <li class="li-inline nav-item"><a href="/highscores">High Scores</a></li>
-      <li class="li-inline nav-item"><a href="/demo">Demo</a></li>
-      <button id="logout" class="btn-no-style">logout</button>
+    {{!-- <ul> --}}
+    <div class="nav-buttons">
+      <button id="home" class="button" href="/">Home</button>
+      {{#if loggedIn}}
+      <button id="logout" class="button">Logout</button>
+      {{/if}}
 
-        <li class="li-inline nav-item">
+      
       <button class="button" data-modal="modalOne">Login</button>
-    </li>
-    <li>
+      
       <button class="button" data-modal="modalTwo">Sign Up</button>
-    </li>
+    </div>
+
     <div id="modalOne" class="modal">
       <div class="modal-content">
-        <div class="contact-form">
-          <a class="close">&times;</a>
-          <form>
-            <h2>Login</h2>
-            <div>
-              <input type="text" id= "login-email" name="name" placeholder="Email" />
-              <input type="password" id = "login-password" name="name" placeholder="Password" />
-            </div>
-            <button type="submit">Enter</button>
-          </form>
-        </div>
+        <form class="modal-form">
+          <h2 class="modal-input modal-header">Login</h2>
+          <div class="modal-input">
+            <input type="text" id= "login-email" name="name" placeholder="Email" />
+            <input type="password" id = "login-password" name="name" placeholder="Password" />
+          </div>
+          <button type="submit" class="modal-button">Enter</button>
+        </form>
+        <a class="close">&times;</a>
       </div>
     </div>
     <div id="modalTwo" class="modal">
       <div class="modal-content">
-        <div class="contact-form">
-          <span class="close">&times;</span>
-          <form>
-            <h2>Sign Up</h2>
-            <div>
-              <input class="fname" type="text" name="name" id="signup-username" placeholder="Username" />
-              <input type="text" name="name" id="signup-email" placeholder="Email" />
-              <input type="password" name="name"id="signup-password" placeholder="Password" />
-            </div>
-            <button type="submit">Enter</button>
-          </form>
-        </div>
+        <form class="modal-form">
+          <h2 class="modal-input modal-header">Sign Up</h2>
+          <div class="modal-input">
+            <input class="fname" type="text" name="name" id="signup-username" placeholder="Username" />
+            <input type="text" name="name" id="signup-email" placeholder="Email" />
+            <input type="password" name="name"id="signup-password" placeholder="Password" />
+          </div>
+          <button type="submit" class="modal-button">Enter</button>
+        </form>
+        <span class="close">&times;</span>
       </div>
     </div>
 
 
-    </ul>
+    {{!-- </ul> --}}
   </nav>
  
   
-  <main class="col-auto">
+  <main class="main">
     {{{body}}}
   </main>
 

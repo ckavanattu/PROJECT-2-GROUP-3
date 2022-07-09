@@ -1,10 +1,28 @@
-<div class="box">
-	<p> Welcome to Jumpman! 
-    <br> <br>
-    Jump to collect all the crystals to advance to the next level! <br>
-    Click the demo button at the top for a preview and instructions. </p>
-</div>
-    
-   
+<section class="homepage">
+  <div class="box">
+    <h1 class="box-text"> Welcome to Crystal Jumper!</h1>
+    <p class="box-text">
+      Collect the crystals to get to the next level!
+    </p>
+    <p class="box-text">
+      Avoid getting hit by the spikeballs!
+    </p>
+    <p class="box-text">
+      please log in to play now!
+    </p>
+  </div>
+
+  <div class = "">
+  <img src="/assets/game2.gif">
+  </div>    
+
+  <div class="">
+    {{#if loggedIn}}
+    <div class="play-button">
+      <h1 class="play-now"><a href="/game" class="play-now">Play Jumpman</a></h1>
+    </div>
+    {{/if}}
+  </div>
+</section>
   
-    <script src= "/javascript/modal.js"> </script>
+<script src= "/javascript/modal.js"> </script>
