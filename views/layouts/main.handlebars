@@ -15,15 +15,13 @@
   <nav class="navbar">
     {{!-- <ul> --}}
     <div class="nav-buttons">
-      <button id="home" class="button" href="/">Home</button>
       {{#if loggedIn}}
+      <button id="home" class="button" id="home">Home</button>
       <button id="logout" class="button">Logout</button>
-      {{/if}}
-
-      
-      <button class="button" data-modal="modalOne">Login</button>
-      
+      {{else}}
       <button class="button" data-modal="modalTwo">Sign Up</button>
+      <button class="button" data-modal="modalOne">Login</button>
+      {{/if}}
     </div>
 
     <div id="modalOne" class="modal">

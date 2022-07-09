@@ -55,6 +55,12 @@ async function signup(event) {
    
 }
 
+function home ()  {
+    document.location.replace('/')
+
+}
+
 
 document.getElementById("modalOne").addEventListener("submit", login)
 document.getElementById("modalTwo").addEventListener("submit", signup)
+document.getElementById("home").addEventListener("click", home)

@@ -7,7 +7,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/game', (req, res) => {
-  res.render('game');
+  res.render('game', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 
