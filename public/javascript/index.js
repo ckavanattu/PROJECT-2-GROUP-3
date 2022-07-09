@@ -480,6 +480,7 @@ class level1 extends Phaser.Scene {
         this.gameOverText.visible = true;
         this.restartText.visible = true;
         this.input.on('pointerdown', () => this.scene.start('level1'));
+        
       }
   
       // score text
@@ -495,7 +496,7 @@ class level1 extends Phaser.Scene {
         diamond.disableBody(true, true);
         score += 10;
         scoreText.setText("Score: " + score);
-        // this.treasure.play();
+                // this.treasure.play();
   
         // if (score > 10) {
         //   this.cameras.main.fadeOut(1000, 0, 0, 0);
