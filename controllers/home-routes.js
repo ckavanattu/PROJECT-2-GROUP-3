@@ -16,7 +16,6 @@ router.get('/game', (req, res) => {
 
 router.get('/reviews', (req, res) => {
   Comment.findAll({
-      loggedIn: req.session.loggedIn ,
       attributes: [
           'id',
           'comment_text',
@@ -32,7 +31,9 @@ router.get('/reviews', (req, res) => {
   })
   .then(commentData => {
     const review = commentData.map(post => post.get({plain:true}));
-    res.render('reviews', { review });
+    res.render('reviews', { 
+      loggedIn: req.session.loggedIn,
+      review });
   })
   .catch(err => {
       console.log(err);
