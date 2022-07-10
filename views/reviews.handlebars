@@ -1,0 +1,38 @@
+<section class="reviews">
+
+    <div class="comment-form" id="comment">
+        <h1> Leave Your Review Below!</h1>
+        <form class="comment-form">
+            <div>
+                <textarea name= 'comment-input' class="comment-input"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="comment-button">add comment</button>
+            </div>
+        </form>
+        
+    </div>
+
+    <div class="other-reviews">
+        <h1> Read Other Reviews!</h1>
+
+        <ol class="review-list">
+            {{#each review }}
+            <li>
+                <div>
+                    <h1>Review From: {{user.username}}</h1>
+                    <p>{{comment_text}}</p>
+                    <p>Date Posted: {{created_at}}</p>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+        
+
+    </div>
+
+ 
+</section>
+
+
+<script src="/javascript/review.js"></script>

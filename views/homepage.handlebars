@@ -1,57 +1,28 @@
-<div class="box">
-	<p> Welcome to Jumpman! 
-    <br> <br>
-    Jump to collect all the crystals to advance to the next level! <br>
-    Click the demo button at the top for a preview and instructions. </p>
-</div>
-    
-   
-    <h2>Login or Sign Up!</h2>
-     <div class = "ls">
-    <p>
-      <button class="button" data-modal="modalOne">Login</button>
+<section class="homepage">
+  <div class="box">
+    <h1 class="box-text"> Welcome to Crystal Jumper!</h1>
+    <p class="box-text">
+      Collect the crystals to get to the next level!
     </p>
-    <p>
-      <button class="button" data-modal="modalTwo">Sign Up</button>
+    <p class="box-text">
+      Avoid getting hit by the spikeballs!
     </p>
-    </div>
-    <div id="modalOne" class="modal">
-      <div class="modal-content">
-        <div class="contact-form">
-          <a class="close">&times;</a>
-          <form action="/">
-            <h2>Login</h2>
-            <div>
-              <input type="text" name="name" placeholder="Email" />
-              <input type="password" name="name" placeholder="Password" />
-            </div>
-            <button type="submit" href="">Enter</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div id="modalTwo" class="modal">
-      <div class="modal-content">
-        <div class="contact-form">
-          <span class="close">&times;</span>
-          <form action="/">
-            <h2>Sign Up</h2>
-            <div>
-              <input class="fname" type="text" name="name" placeholder="First Name" />
-              <input type="text" name="name" placeholder="Last Name" />
-              <input type="text" name="name" placeholder="Email" />
-              <input type="password" name="name" placeholder="Password" />
-            </div>
-            <button type="submit" href="/">Enter</button>
-          </form>
-        </div>
-      </div>
-    </div>
+    <p class="box-text">
+      please log in to play now!
+    </p>
+  </div>
 
-      <h2> Play Now! </h2>
-  <form>
-  <input placeholder="Name"><br>
-  <input type="submit" value="Enter">
-  </form>
+  <div class = "">
+  <img src="/assets/game2.gif">
+  </div>    
 
-    <script src= "/javascript/modal.js"> </script>
+  <div class="">
+    {{#if loggedIn}}
+    <div class="play-button">
+      <h1 class="play-now"><a href="/game" class="play-now">Play Crystal Jumper</a></h1>
+    </div>
+    {{/if}}
+  </div>
+</section>
+  
+<script src= "/javascript/modal.js"> </script>
