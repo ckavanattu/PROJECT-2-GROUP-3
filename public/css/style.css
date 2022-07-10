@@ -70,7 +70,10 @@ canvas {
   background-color: lightgrey;
   display: flex;
   flex-direction: column;
-  
+  padding: 25px;
+  margin: 25px;
+  box-shadow: 0 2px 5px #f5f5f5;
+    
 }
 .modal-input {
   background-color: lightgrey
@@ -118,14 +121,8 @@ span {
   padding: 0 0 5px;
 }
   
-form {
-  padding: 25px;
-  margin: 25px;
-  box-shadow: 0 2px 5px #f5f5f5;
-  background: #eee;
-}
-  
-input,
+ 
+/* input,
 textarea {
   width: 90%;
   padding: 10px;
@@ -133,7 +130,7 @@ textarea {
   border: 1px solid #1c87c9;
   outline: none;
   background-color: white;
-}
+} */
 
 .contact-form {
   background-color: white;
@@ -171,12 +168,6 @@ button.button:hover {
   color: green;
 }
   
-a:link { 
-  text-decoration: none; 
-  text-decoration-color: #fff;
-}
-   
-a:visited { text-decoration: white; }
 
 .homepage{
   display: flex;
@@ -232,3 +223,61 @@ a:visited { text-decoration: white; }
     display: flex;
     justify-content: space-around;
   }
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+a:link, a:visited { 
+  text-decoration: none; 
+  text-decoration-color: #fff;
+  color: black;
+  font-size: 25px;
+}
+
+a:hover {
+  color: green;
+}
+
+.reviews {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.comment-form{
+  width: 100%;
+ 
+}
+.comment-form h1 {
+  text-align: center;
+}
+.comment-input {
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  background-color: white;
+}
+
+.comment-button {
+  border-radius: 25px;
+  font-size: 20px;
+  align-self: center;
+}
+
+.other-reviews {
+  display: flex;
+  flex-direction: column;
+}
+.review-list {
+  display: flex;
+  flex-direction: column;
+}
