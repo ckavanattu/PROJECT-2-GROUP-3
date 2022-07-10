@@ -29,7 +29,15 @@ router.post('/', (req, res) => {
         comment_text: req.body.comment_text,
         user_id: req.session.user_id,
     })
-    .then(commentData => res.json(commentData))
+    .then(commentData => {
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.username= userData.username;
+            req.session.loggedIn = true;
+
+            res.json(commentData);
+        });
+    })
     .catch(err => {
         console.log(err);
         res.status(400).json(err);

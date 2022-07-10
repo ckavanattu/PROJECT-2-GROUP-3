@@ -239,7 +239,11 @@ a:link, a:visited {
 a:hover {
   color: green;
 }
-
+#review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .reviews {
   width: 60%;
   display: flex;
@@ -276,8 +280,6 @@ a:hover {
 .other-reviews {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
-.review-list {
-  display: flex;
-  flex-direction: column;
-}
+

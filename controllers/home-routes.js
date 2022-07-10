@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
   res.render('homepage', {
@@ -8,13 +9,13 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/game', (req, res) => {
+router.get('/game', withAuth, (req, res) => {
   res.render('game', {
     loggedIn: req.session.loggedIn
   });
 });
 
-router.get('/reviews', (req, res) => {
+router.get('/reviews', withAuth, (req, res) => {
   Comment.findAll({
       attributes: [
           'id',
